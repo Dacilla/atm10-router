@@ -1,0 +1,1 @@
+{"id":"atm10-router","name":"ATM10 Router","version":"1.4.0","description":"Routes clients to the correct backend based on protocol version","authors":["Dacilla"],"main":"com.lexylou.velocity.Atm10Router"}

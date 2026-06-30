@@ -15,12 +15,13 @@ import org.slf4j.Logger;
 @Plugin(
     id = "atm10-router",
     name = "ATM10 Router",
-    version = "1.4.0",
+    version = "1.5.0",
     description = "Routes clients to the correct backend based on protocol version",
     authors = {"Dacilla"}
 )
 public class Atm10Router {
 
+    private static final int MC_26_2_PROTOCOL = 776;
     private static final int MC_1_21_1_PROTOCOL = 767;
     private static final int MC_1_20_1_PROTOCOL = 763;
 
@@ -48,6 +49,12 @@ public class Atm10Router {
         if (protocol == MC_1_20_1_PROTOCOL) {
             logger.info("{} routed to Liminal Industries (protocol {})", username, protocol);
             routeToServer(event, "liminal");
+            return;
+        }
+
+        if (protocol == MC_26_2_PROTOCOL) {
+            logger.info("{} routed to vanilla (protocol 26.2)", username);
+            routeToServer(event, "vanilla");
             return;
         }
 
